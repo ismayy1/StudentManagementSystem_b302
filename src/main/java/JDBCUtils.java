@@ -1,3 +1,5 @@
+import java.sql.*;
+
 public class JDBCUtils {
 
     public static Connection connection;
@@ -25,7 +27,7 @@ public class JDBCUtils {
     public static void setPreparedStatement(String sql) {
 
         try {
-            preparedStatement = connection.preparedStatement(sql);
+            preparedStatement = connection.prepareStatement(sql);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

@@ -1,3 +1,5 @@
+import java.util.List;
+
 public interface GenericRepository<S, U> {
 
     void createTable();
