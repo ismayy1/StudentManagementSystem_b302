@@ -1,3 +1,19 @@
+/*
+ * Project: Student Management System
+ * 1. Develop a student management system for any school.
+ * 2. Users can:
+ *    - C: Register a student.
+ *    - R: View a student or a list of students.
+ *    - U: Update a student by ID.
+ *    - D: Delete a student by ID.
+ * 3. Student Properties:
+ *    - id, name, lastname, city, age.
+ * Homework:
+ *    - After deleting a student, display the details of the deleted student.
+ *    - After adding a student, display the details of the added student.
+ *    - Allow filtering students by first name and last name.
+ */
+
 public class Runner {
     public static void main(String[] args) {
 
