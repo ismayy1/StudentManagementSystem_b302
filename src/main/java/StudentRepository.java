@@ -29,7 +29,30 @@ public class StudentRepository implements GenericRepository<Student, Integer> {
     }
 
     @Override
-    public void save(Student entity) {
+    public void save(Student student) {
+
+        String sql = "INSERT INTO t_student(firstName, lastName, city, age) VALUES(?, ?, ?, ?)";
+        JDBCUtils.setConnection();
+        JDBCUtils.setPreparedStatement(sql);
+
+        try {
+            JDBCUtils.preparedStatement.setString(1, student.getFirstName());
+            JDBCUtils.preparedStatement.setString(2, student.getLastName());
+            JDBCUtils.preparedStatement.setString(3, student.getCity());
+            JDBCUtils.preparedStatement.setInt(4, student.getAge());
+
+            JDBCUtils.preparedStatement.executeUpdate();
+            System.out.println("Saved student Successfully: " + student.getFirstName());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                JDBCUtils.preparedStatement.close();
+                JDBCUtils.connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
     }
 
