@@ -103,11 +103,72 @@ public class StudentRepository implements GenericRepository<Student, Integer> {
     @Override
     public void deleteById(Integer id) {
 
+        JDBCUtils.setConnection();
+//        JDBCUtils.setStatement();
+//        String sql = "DELETE FROM t_student WHERE id=" + id;
+//        JDBCUtils.statement.executeUpdate(sql);
+
+        String query = "DELETE FROM t_student WHERE id=?";
+
+        JDBCUtils.setPreparedStatement(query);
+
+        try {
+            JDBCUtils.preparedStatement.setInt(1, id);
+            int deleted = JDBCUtils.preparedStatement.executeUpdate();
+
+            if (deleted > 0) {
+                System.out.println("Student Deleted successfully! ID: " + id);
+            } else {
+                System.out.println("No Student found with the ID: " + id);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                JDBCUtils.preparedStatement.close();
+                JDBCUtils.connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     @Override
     public Student findById(Integer id) {
-        return null;
+
+        Student student = null;
+        JDBCUtils.setConnection();
+        String sql = "SELECT * FROM t_student WHERE id=?";
+
+        JDBCUtils.setPreparedStatement(sql);
+
+        try {
+            JDBCUtils.preparedStatement.setInt(1, id);
+            ResultSet resultSet = JDBCUtils.preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                student = new Student();
+                student.setId(resultSet.getInt("id"));
+                student.setFirstName(resultSet.getString("firstName"));
+                student.setLastName(resultSet.getString("lastName"));
+                student.setCity(resultSet.getString("city"));
+                student.setAge(resultSet.getInt("age"));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                JDBCUtils.preparedStatement.close();
+                JDBCUtils.connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        return student;
+//        return null;
     }
 
     @Override

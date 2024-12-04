@@ -54,13 +54,13 @@ public class Runner {
                     service.getAllStudents();
                     break;
                 case 3:
-
+                    service.updateStudent(getId(scanner));
                     break;
                 case 4:
-
+                    service.deleteStudent(getId(scanner));
                     break;
                 case 5:
-
+                    service.findStudentById(getId(scanner));
                     break;
                 case 6:
 

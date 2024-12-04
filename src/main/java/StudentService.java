@@ -40,14 +40,40 @@ public class StudentService {
         System.out.println("========== All Students ==========");
 
         for (Student student : students) {
+            System.out.println("+++++++++++++++++++++++");
             System.out.println("ID: " + student.getId());
             System.out.println("First Name: " + student.getFirstName());
             System.out.println("Last Name: " + student.getLastName());
             System.out.println("City: " + student.getCity());
             System.out.println("Age: " + student.getAge());
 //            We have 1 student printed
-
-            System.out.println();
+            System.out.println("+++++++++++++++++++++++");
         }
+    }
+
+    public void deleteStudent(int id) {
+        repository.deleteById(id);
+    }
+
+    public Student getStudentById(int id) {
+
+        Student student = repository.findById(id);
+        return student;
+    }
+
+    public void findStudentById(int id) {
+
+        Student student = getStudentById(id);
+
+        if (student == null) {
+            System.out.println("Student found with ID: " + id);
+        } else {
+            System.out.println(student);
+        }
+    }
+
+    public void updateStudent(int id) {
+
+
     }
 }
