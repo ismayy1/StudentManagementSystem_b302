@@ -25,6 +25,8 @@ public class Runner {
     public static void start() {
         Scanner scanner = new Scanner(System.in);
 
+        StudentService service = new StudentService();
+
         int select;
         do {
             System.out.println("==========================");
@@ -42,7 +44,8 @@ public class Runner {
 
             switch (select) {
                 case 1:
-
+                    Student student = service.getInfo();
+                    service.saveStudent(student);
                     break;
                 case 2:
 
