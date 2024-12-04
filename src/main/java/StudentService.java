@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class StudentService {
@@ -31,5 +32,22 @@ public class StudentService {
     public void saveStudent(Student newStudent) {
 
         repository.save(newStudent);
+    }
+
+    public void getAllStudents() {
+
+        List<Student> students = repository.findAll();
+        System.out.println("========== All Students ==========");
+
+        for (Student student : students) {
+            System.out.println("ID: " + student.getId());
+            System.out.println("First Name: " + student.getFirstName());
+            System.out.println("Last Name: " + student.getLastName());
+            System.out.println("City: " + student.getCity());
+            System.out.println("Age: " + student.getAge());
+//            We have 1 student printed
+
+            System.out.println();
+        }
     }
 }

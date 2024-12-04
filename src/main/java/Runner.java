@@ -51,7 +51,7 @@ public class Runner {
                     service.saveStudent(student);
                     break;
                 case 2:
-
+                    service.getAllStudents();
                     break;
                 case 3:
 

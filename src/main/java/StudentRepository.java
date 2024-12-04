@@ -1,4 +1,6 @@
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentRepository implements GenericRepository<Student, Integer> {
@@ -58,7 +60,44 @@ public class StudentRepository implements GenericRepository<Student, Integer> {
 
     @Override
     public List<Student> findAll() {
-        return List.of();
+
+        JDBCUtils.setConnection();
+        JDBCUtils.setStatement();
+
+        String sql = "SELECT * FROM t_student";
+
+        List<Student> allStudents = new ArrayList<>();
+
+        try {
+            ResultSet resultSet = JDBCUtils.statement.executeQuery(sql);
+
+            while (resultSet.next()) {
+
+                Student student = new Student(resultSet.getString("firstName"),
+                        resultSet.getString("lastName"),
+                        resultSet.getString("city"),
+                        resultSet.getInt("age"));
+
+                student.setId(resultSet.getInt("id"));
+
+                allStudents.add(student);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+
+                JDBCUtils.statement.close();
+                JDBCUtils.connection.close();
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        return allStudents;
+//        return List.of();
     }
 
     @Override
