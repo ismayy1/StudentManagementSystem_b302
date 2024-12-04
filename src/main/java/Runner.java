@@ -9,8 +9,8 @@
  * 3. Student Properties:
  *    - id, name, lastname, city, age.
  * Homework:
- *    - After deleting a student, display the details of the deleted student.
- *    - After adding a student, display the details of the added student.
+ *    - After deleting a student, display the details of the deleted student.   // DONE
+ *    - After adding a student, display the details of the added student.   // DONE
  *    - Allow filtering students by first name and last name.
  */
 
@@ -43,12 +43,19 @@ public class Runner {
             System.out.println("0 - Exit");
             System.out.println();
             System.out.println("Choose an operation");
+
             select = scanner.nextInt();
+            scanner.nextLine();
 
             switch (select) {
                 case 1:
                     Student student = service.getInfo();
-                    service.saveStudent(student);
+                    new Thread(() -> {
+                        service.saveStudent(student);
+                    }).start();
+
+//                    Student student = service.getInfo();
+//                    service.saveStudent(student);
                     break;
                 case 2:
                     service.getAllStudents();
@@ -60,10 +67,20 @@ public class Runner {
                     service.deleteStudent(getId(scanner));
                     break;
                 case 5:
-                    service.findStudentById(getId(scanner));
+                    int id = getId(scanner);
+
+                    new Thread(() -> {
+//                        service.findStudentById(getId(scanner));
+                        service.findStudentById(id);
+                    }).start();
                     break;
                 case 6:
-                    service.gereateReport();
+
+                    new Thread(() -> {
+                       service.generateReport();
+                    }).start();
+
+//                    service.generateReport();
                     break;
                 default:
                     System.out.println("Have a greate day!");

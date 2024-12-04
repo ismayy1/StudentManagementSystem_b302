@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -32,6 +35,8 @@ public class StudentService {
     public void saveStudent(Student newStudent) {
 
         repository.save(newStudent);
+
+        System.out.println("Adding a student: " + newStudent);
     }
 
     public void getAllStudents() {
@@ -52,7 +57,16 @@ public class StudentService {
     }
 
     public void deleteStudent(int id) {
-        repository.deleteById(id);
+
+        Student student = getStudentById(id);
+
+        int deleted = repository.deleteById(id);
+
+        if (deleted > 0) {
+            System.out.println("Deleted Student: " + student);
+        } else {
+            System.out.println("No student found with ID: " + id);
+        }
     }
 
     public Student getStudentById(int id) {
@@ -95,7 +109,31 @@ public class StudentService {
         }
     }
 
-    public void gereateReport() {
+    public void generateReport() {
 
+        try {
+            System.out.println("Report is loading...");
+            Thread.sleep(10000);
+
+            List<Student> students = repository.findAll();
+//            FileWriter fileWriter = new FileWriter("Student-report.txt");
+            FileWriter fileWriter = new FileWriter(new File("Folder", "Student-report.txt"));
+
+            fileWriter.write("Student Report\n");
+            fileWriter.write("============================\n");
+
+            for (Student student: students) {
+                fileWriter.write("Student: " + student.getFirstName() + " " + student.getLastName() + "\n");
+
+            }
+
+            fileWriter.close();
+            System.out.println("Report generated and saved into Student-report.txt");
+
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

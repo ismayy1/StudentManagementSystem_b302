@@ -101,7 +101,7 @@ public class StudentRepository implements GenericRepository<Student, Integer> {
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public int deleteById(Integer id) {
 
         JDBCUtils.setConnection();
 //        JDBCUtils.setStatement();
@@ -132,6 +132,7 @@ public class StudentRepository implements GenericRepository<Student, Integer> {
                 throw new RuntimeException(e);
             }
         }
+        return 0;
     }
 
     @Override

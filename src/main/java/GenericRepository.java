@@ -8,7 +8,7 @@ public interface GenericRepository<S, U> {
 
     List<S> findAll();
 
-    void deleteById(U id);
+    int deleteById(U id);
 
     S findById(U id);
 
