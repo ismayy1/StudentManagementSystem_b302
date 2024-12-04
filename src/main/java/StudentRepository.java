@@ -172,7 +172,26 @@ public class StudentRepository implements GenericRepository<Student, Integer> {
     }
 
     @Override
-    public void update(Student entity) {
+    public int update(Student newStudent) {
 
+        JDBCUtils.setConnection();
+        String query = "UPDATE t_student SET firstName=?, lastName=?, city=?, age=? WHERE id=?";
+
+        JDBCUtils.setPreparedStatement(query);
+
+        try {
+            JDBCUtils.preparedStatement.setString(1, newStudent.getFirstName());
+            JDBCUtils.preparedStatement.setString(2, newStudent.getLastName());
+            JDBCUtils.preparedStatement.setString(3, newStudent.getCity());
+            JDBCUtils.preparedStatement.setInt(4, newStudent.getAge());
+            JDBCUtils.preparedStatement.setInt(5, newStudent.getId());
+
+            int updateCount = JDBCUtils.preparedStatement.executeUpdate();
+
+            return updateCount;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

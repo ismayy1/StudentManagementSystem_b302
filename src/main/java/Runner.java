@@ -63,10 +63,10 @@ public class Runner {
                     service.findStudentById(getId(scanner));
                     break;
                 case 6:
-
+                    service.gereateReport();
                     break;
                 default:
-
+                    System.out.println("Have a greate day!");
                     break;
             }
         } while (select != 0);

@@ -74,6 +74,28 @@ public class StudentService {
 
     public void updateStudent(int id) {
 
+        Student foundStudent = getStudentById(id);
+
+        if (foundStudent == null) {
+            System.out.println("No Student found with ID: " + id);
+        } else {
+            Student newStudent = getInfo();
+            scanner.nextLine();
+
+            foundStudent.setFirstName(newStudent.getFirstName());
+            foundStudent.setLastName(newStudent.getLastName());
+            foundStudent.setCity(newStudent.getCity());
+            foundStudent.setAge(newStudent.getAge());
+
+            int updatedCount = repository.update(foundStudent);
+
+            if (updatedCount > 0) {
+                System.out.println("Student Updated successfully!");
+            }
+        }
+    }
+
+    public void gereateReport() {
 
     }
 }

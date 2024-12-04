@@ -12,5 +12,5 @@ public interface GenericRepository<S, U> {
 
     S findById(U id);
 
-    void update(S entity);
+    int update(S entity);
 }
