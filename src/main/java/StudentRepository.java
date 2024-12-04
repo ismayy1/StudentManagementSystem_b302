@@ -9,12 +9,12 @@ public class StudentRepository implements GenericRepository<Student, Integer> {
         JDBCUtils.setStatement();
 
         try {
-            JDBCUtils.statement.execute("CREATE TABLE IF NOT EXISTS t_student (" +
-                    "id SERIAL UNIQUE, " +
-                    "firstName VARCHAR(50) NOT NULL CHECK(LENGTH(firstName)>0)" +
-                    "lastName VARCHAR(50) NOT NULL CHECK(LENGTH(lastName)>0)" +
-                    "city VARCHAR(50) NOT NULL CHECK(LENGTH(city)>0)" +
-                    "age INT NOT NULL CHECK(age>0)");
+            JDBCUtils.statement.execute("CREATE TABLE IF NOT EXISTS t_student(" +
+                    "id SERIAL UNIQUE," +
+                    "firstName VARCHAR(50) NOT NULL CHECK(LENGTH(firstName)>0)," + // Empty : ""
+                    "lastName VARCHAR(50) NOT NULL CHECK(LENGTH(lastName)>0)," +
+                    "city VARCHAR(50) NOT NULL CHECK(LENGTH(city)>0)," +
+                    "age INT NOT NULL CHECK(age>0))");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {

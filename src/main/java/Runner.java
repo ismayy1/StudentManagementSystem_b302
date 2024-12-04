@@ -28,6 +28,9 @@ public class Runner {
         StudentService service = new StudentService();
 
         int select;
+
+        service.createStudentTable();
+
         do {
             System.out.println("==========================");
             System.out.println("Student Management System");
