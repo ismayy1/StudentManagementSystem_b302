@@ -1,0 +1,10 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8097/eureka  # Address of the Eureka server.
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/logdb
+      #Default database, no need for username and password.

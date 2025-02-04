@@ -1,0 +1,18 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8097/eureka  # Address of the Eureka server.
+
+spring:
+  cloud:
+    gateway:
+      routes: # Routes, rules for forwarding request.
+        - id: carModule
+          uri: lb://car-service # lb= load balancer --> might forward to a subsidiary server.
+          predicates:
+            - Path=/car/** # Only the requests with /car/** path wil be routed to car-service application.
+
+        - id: logModule
+          uri: lb://log-service
+          predicates:
+            - Path=/log/**
