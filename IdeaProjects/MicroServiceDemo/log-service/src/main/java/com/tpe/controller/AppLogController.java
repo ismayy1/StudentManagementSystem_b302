@@ -26,8 +26,11 @@ public class AppLogController {
     @PostMapping
     public ResponseEntity<Map<String, Object>> createLog(@RequestBody AppLogDTO appLogDTO) {
         AppLog appLog = appLogService.saveAppLog(appLogDTO);
+        System.out.println(appLog);
+
         Map<String, Object> map = new HashMap<>();
         map.put("logBody", appLog.getDescription());
+
         return new ResponseEntity<>(map, HttpStatus.CREATED); // 201
     }
 }
