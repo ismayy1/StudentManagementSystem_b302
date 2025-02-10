@@ -12,11 +12,14 @@ import {
   Cell,
 } from 'recharts';
 import { useCarStore } from '../data/cars';
-import { Filter, Calendar } from 'lucide-react';
+import { Filter } from 'lucide-react';
+import { useTheme } from '../contexts/ThemeContext';
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+const COLORS = ['#2563EB', '#059669', '#D97706', '#DC2626'];
+const DARK_COLORS = ['#60A5FA', '#34D399', '#FBBF24', '#FB923C'];
 
 export const Statistics: React.FC = () => {
+  const { isDarkMode } = useTheme();
   const { cars } = useCarStore();
   const [filters, setFilters] = useState({
     make: '',
@@ -83,24 +86,30 @@ export const Statistics: React.FC = () => {
   };
 
   return (
-    <div className="flex-1 bg-gray-100 py-8">
+    <div className={`flex-1 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-100'} py-8`}>
       <div className="max-w-7xl mx-auto px-4">
         <div className="mb-8">
-          <div className="bg-white rounded-lg shadow-md p-6">
+          <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} rounded-lg shadow-md p-6`}>
             <div className="flex items-center gap-2 mb-4">
               <Filter size={20} className="text-blue-600" />
-              <h2 className="text-lg font-semibold">Filter Statistics</h2>
+              <h2 className={`text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                Filter Statistics
+              </h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className={`block text-sm font-medium ${isDarkMode ? 'text-gray-200' : 'text-gray-700'} mb-1`}>
                   Make
                 </label>
                 <select
                   value={filters.make}
                   onChange={(e) => handleFilterChange('make', e.target.value)}
-                  className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  className={`w-full rounded-md shadow-sm 
+                    ${isDarkMode 
+                      ? 'bg-gray-700 border-gray-600 text-white' 
+                      : 'bg-white border-gray-300 text-gray-900'}
+                    border focus:border-blue-500 focus:ring-blue-500`}
                 >
                   <option value="">All Makes</option>
                   {makes.map(make => (
@@ -110,13 +119,17 @@ export const Statistics: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className={`block text-sm font-medium ${isDarkMode ? 'text-gray-200' : 'text-gray-700'} mb-1`}>
                   Model
                 </label>
                 <select
                   value={filters.model}
                   onChange={(e) => handleFilterChange('model', e.target.value)}
-                  className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  className={`w-full rounded-md shadow-sm 
+                    ${isDarkMode 
+                      ? 'bg-gray-700 border-gray-600 text-white' 
+                      : 'bg-white border-gray-300 text-gray-900'}
+                    border focus:border-blue-500 focus:ring-blue-500`}
                   disabled={!filters.make}
                 >
                   <option value="">All Models</option>
@@ -127,13 +140,17 @@ export const Statistics: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className={`block text-sm font-medium ${isDarkMode ? 'text-gray-200' : 'text-gray-700'} mb-1`}>
                   Condition
                 </label>
                 <select
                   value={filters.condition}
                   onChange={(e) => handleFilterChange('condition', e.target.value)}
-                  className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  className={`w-full rounded-md shadow-sm 
+                    ${isDarkMode 
+                      ? 'bg-gray-700 border-gray-600 text-white' 
+                      : 'bg-white border-gray-300 text-gray-900'}
+                    border focus:border-blue-500 focus:ring-blue-500`}
                 >
                   <option value="">All Conditions</option>
                   <option value="New">New</option>
@@ -142,7 +159,7 @@ export const Statistics: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className={`block text-sm font-medium ${isDarkMode ? 'text-gray-200' : 'text-gray-700'} mb-1`}>
                   Min Price
                 </label>
                 <input
@@ -150,12 +167,16 @@ export const Statistics: React.FC = () => {
                   value={filters.minPrice}
                   onChange={(e) => handleFilterChange('minPrice', e.target.value)}
                   placeholder="Min Price"
-                  className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  className={`w-full rounded-md shadow-sm 
+                    ${isDarkMode 
+                      ? 'bg-gray-700 border-gray-600 text-white' 
+                      : 'bg-white border-gray-300 text-gray-900'}
+                    border focus:border-blue-500 focus:ring-blue-500`}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className={`block text-sm font-medium ${isDarkMode ? 'text-gray-200' : 'text-gray-700'} mb-1`}>
                   Max Price
                 </label>
                 <input
@@ -163,12 +184,16 @@ export const Statistics: React.FC = () => {
                   value={filters.maxPrice}
                   onChange={(e) => handleFilterChange('maxPrice', e.target.value)}
                   placeholder="Max Price"
-                  className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  className={`w-full rounded-md shadow-sm 
+                    ${isDarkMode 
+                      ? 'bg-gray-700 border-gray-600 text-white' 
+                      : 'bg-white border-gray-300 text-gray-900'}
+                    border focus:border-blue-500 focus:ring-blue-500`}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className={`block text-sm font-medium ${isDarkMode ? 'text-gray-200' : 'text-gray-700'} mb-1`}>
                   Date Range
                 </label>
                 <div className="flex gap-2">
@@ -176,13 +201,21 @@ export const Statistics: React.FC = () => {
                     type="date"
                     value={filters.startDate}
                     onChange={(e) => handleFilterChange('startDate', e.target.value)}
-                    className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    className={`w-full rounded-md shadow-sm 
+                      ${isDarkMode 
+                        ? 'bg-gray-700 border-gray-600 text-white' 
+                        : 'bg-white border-gray-300 text-gray-900'}
+                      border focus:border-blue-500 focus:ring-blue-500`}
                   />
                   <input
                     type="date"
                     value={filters.endDate}
                     onChange={(e) => handleFilterChange('endDate', e.target.value)}
-                    className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    className={`w-full rounded-md shadow-sm 
+                      ${isDarkMode 
+                        ? 'bg-gray-700 border-gray-600 text-white' 
+                        : 'bg-white border-gray-300 text-gray-900'}
+                      border focus:border-blue-500 focus:ring-blue-500`}
                   />
                 </div>
               </div>
@@ -192,23 +225,29 @@ export const Statistics: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Purchase Rate Chart */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-semibold mb-4">Purchase Rate by Model</h2>
+          <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} p-6 rounded-lg shadow-md`}>
+            <h2 className={`text-xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Purchase Rate by Model</h2>
             <div className="overflow-x-auto">
               <BarChart width={500} height={300} data={purchaseData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
+                <CartesianGrid strokeDasharray="3 3" stroke={isDarkMode ? '#374151' : '#e5e7eb'} />
+                <XAxis dataKey="name" stroke={isDarkMode ? '#9CA3AF' : '#4B5563'} />
+                <YAxis stroke={isDarkMode ? '#9CA3AF' : '#4B5563'} />
+                <Tooltip 
+                  contentStyle={{ 
+                    backgroundColor: isDarkMode ? '#1F2937' : 'white',
+                    border: `1px solid ${isDarkMode ? '#374151' : '#E5E7EB'}`,
+                    color: isDarkMode ? 'white' : 'black'
+                  }}
+                />
                 <Legend />
-                <Bar dataKey="purchases" fill="#3B82F6" />
+                <Bar dataKey="purchases" fill={isDarkMode ? '#60A5FA' : '#3B82F6'} />
               </BarChart>
             </div>
           </div>
 
           {/* Condition Distribution */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-semibold mb-4">
+          <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} p-6 rounded-lg shadow-md`}>
+            <h2 className={`text-xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
               New vs Used Distribution
             </h2>
             <PieChart width={400} height={300}>
@@ -236,7 +275,7 @@ export const Statistics: React.FC = () => {
                     <text
                       x={x}
                       y={y}
-                      fill="white"
+                      fill={isDarkMode ? "white" : "black"}
                       textAnchor="middle"
                       dominantBaseline="central"
                     >
@@ -248,11 +287,17 @@ export const Statistics: React.FC = () => {
                 {conditionData.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
+                    fill={isDarkMode ? DARK_COLORS[index % DARK_COLORS.length] : COLORS[index % COLORS.length]}
                   />
                 ))}
               </Pie>
-              <Tooltip />
+              <Tooltip 
+                contentStyle={{ 
+                  backgroundColor: isDarkMode ? '#1F2937' : 'white',
+                  border: `1px solid ${isDarkMode ? '#374151' : '#E5E7EB'}`,
+                  color: isDarkMode ? 'white' : 'black'
+                }}
+              />
             </PieChart>
           </div>
         </div>

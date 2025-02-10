@@ -42,7 +42,7 @@ export const Admin: React.FC = () => {
             <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Admin Dashboard</h1>
             <button 
               onClick={() => navigate('/admin/add-car')}
-              className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 dark:hover:bg-blue-500"
+              className="flex items-center gap-2 bg-[#11355baf] text-white px-4 py-2 rounded-md hover:bg-[#11355baf]/80"
             >
               <PlusCircle size={20} />
               Add New Car
@@ -163,7 +163,7 @@ export const Admin: React.FC = () => {
                     </button>
                     <button
                       type="submit"
-                      className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 dark:hover:bg-blue-500"
+                      className="px-4 py-2 bg-[#11355baf] text-white rounded-md hover:bg-[#11355baf]/80"
                     >
                       Save Changes
                     </button>

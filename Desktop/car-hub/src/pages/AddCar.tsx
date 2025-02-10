@@ -183,7 +183,7 @@ export const AddCar: React.FC = () => {
                 <button
                   type="button"
                   onClick={addFeature}
-                  className="bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 dark:hover:bg-blue-500"
+                  className="bg-[#11355baf] text-white p-2 rounded-md hover:bg-[#11355baf]/80"
                 >
                   <Plus size={20} />
                 </button>
@@ -217,7 +217,7 @@ export const AddCar: React.FC = () => {
               </button>
               <button
                 type="submit"
-                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 dark:hover:bg-blue-500"
+                className="px-4 py-2 bg-[#11355baf] text-white rounded-md hover:bg-[#11355baf]/80"
               >
                 Add Car
               </button>

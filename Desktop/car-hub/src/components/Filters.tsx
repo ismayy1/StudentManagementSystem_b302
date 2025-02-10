@@ -29,7 +29,7 @@ export const Filters: React.FC<FiltersProps> = ({ filters, onFilterChange }) => 
           <select
             value={filters.make}
             onChange={(e) => onFilterChange('make', e.target.value)}
-            className="w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
           >
             <option value="">All Makes</option>
             <option value="Toyota">Toyota</option>
@@ -46,7 +46,7 @@ export const Filters: React.FC<FiltersProps> = ({ filters, onFilterChange }) => 
           <select
             value={filters.condition}
             onChange={(e) => onFilterChange('condition', e.target.value)}
-            className="w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
           >
             <option value="">All Conditions</option>
             <option value="New">New</option>
@@ -61,7 +61,7 @@ export const Filters: React.FC<FiltersProps> = ({ filters, onFilterChange }) => 
           <select
             value={filters.fuelType}
             onChange={(e) => onFilterChange('fuelType', e.target.value)}
-            className="w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
           >
             <option value="">All Fuel Types</option>
             <option value="Petrol">Petrol</option>
@@ -78,7 +78,7 @@ export const Filters: React.FC<FiltersProps> = ({ filters, onFilterChange }) => 
           <select
             value={filters.transmission}
             onChange={(e) => onFilterChange('transmission', e.target.value)}
-            className="w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            className="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
           >
             <option value="">All Transmissions</option>
             <option value="Automatic">Automatic</option>
@@ -96,14 +96,14 @@ export const Filters: React.FC<FiltersProps> = ({ filters, onFilterChange }) => 
               placeholder="Min"
               value={filters.minPrice}
               onChange={(e) => onFilterChange('minPrice', e.target.value)}
-              className="w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              className="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500 placeholder-gray-400 dark:placeholder-gray-500"
             />
             <input
               type="number"
               placeholder="Max"
               value={filters.maxPrice}
               onChange={(e) => onFilterChange('maxPrice', e.target.value)}
-              className="w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500"
+              className="w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500 placeholder-gray-400 dark:placeholder-gray-500"
             />
           </div>
         </div>
