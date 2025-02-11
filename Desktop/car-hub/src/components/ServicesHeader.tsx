@@ -11,10 +11,6 @@ export const Header: React.FC = () => {
 
   const formRef = useRef<HTMLDivElement>(null);
 
-  const isActive = (path: string) => {
-    return location.pathname === path ? 'bg-blue-700' : '';
-  };
-
   const handleButtonClick = () => {
     if (formRef.current) {
       formRef.current.scrollIntoView({ behavior: 'smooth' });

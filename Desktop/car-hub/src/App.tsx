@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
-import { Header } from './components/Header';
+import { Header } from './components/headers/Header';
 import { Footer } from './components/Footer';
 import { Register } from './pages/Register';
 import { Admin } from './pages/Admin';
@@ -11,6 +11,7 @@ import { Statistics } from './pages/Statistics';
 import { Services } from './pages/Services';
 import { CarDetails } from './pages/CarDetails';
 import { ServiceDetails } from './pages/ServiceDetails';
+import { ServicesHeader } from './components/headers/ServiceHeader';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -29,11 +30,23 @@ function App() {
     <ThemeProvider>
       <Router>
         <div className="min-h-screen flex flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors">
-          <Header />
+          {/* <Header /> */}
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route 
+              path="/" 
+              element={
+
+                <ProtectedRoute>
+                  <Header />
+                  <Home />
+                </ProtectedRoute>
+
+                // <Home />
+              } 
+            />
             <Route path="/car/:id" element={<CarDetails />} />
             <Route path="/register" element={<Register />} />
+            
             <Route
               path="/admin"
               element={
@@ -62,6 +75,7 @@ function App() {
               path="/services"
               element={
                 <ProtectedRoute>
+                  <ServicesHeader />
                   <Services />
                 </ProtectedRoute>
               }
