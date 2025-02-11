@@ -16,7 +16,7 @@
 }
 
 .import-index {
-  background-image: url('assets/bg2.jpg');
+  background-image: url('assets/bg2-cr.jpg');
   background-size: cover; 
   background-position: center; 
   background-repeat: no-repeat; 
@@ -99,3 +99,9 @@ body {
 }
 
 /* ========================================================== */
+.felementser {
+  background-image: url('assets/bg2-ser.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

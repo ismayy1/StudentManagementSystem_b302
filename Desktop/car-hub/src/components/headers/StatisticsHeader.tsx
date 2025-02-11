@@ -104,7 +104,7 @@ export const ServicesHeader: React.FC = () => {
         </nav>
 
       <header className="mt-[70px]">
-        <div className="relative bg-[#11355baf] dark:bg-gradient-to-r dark:from-blue-1100/70 dark:to-blue-950">
+        <div className="relative bg-[#11355baf] dark:bg-gradient-to-r dark:from-blue-900 dark:to-blue-950">
           {/* Background Pattern */}
           <div className="felementser absolute inset-0 opacity-10 dark:opacity-20">
             <div className="absolute inset-0" 

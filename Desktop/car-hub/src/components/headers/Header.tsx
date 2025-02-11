@@ -93,9 +93,9 @@ export const Header: React.FC = () => {
           </div>
       </nav>
 
-      <header className="bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-800 dark:to-blue-900 text-white import-index min-h-screen">
+      <header className="mt-[70px] bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-800 dark:to-blue-900 text-white import-index min-h-screen">
         <div className="max-w-7xl mx-auto pt-[64px]">
-          <div className="relative h-[calc(100vh-64px)] overflow-hidden loginForum flex flex-col justify-center">
+          <div className="-mt-[100px] relative h-[calc(100vh-64px)] overflow-hidden loginForum flex flex-col justify-center">
             <div className="flex flex-col justify-center items-center text-center px-8 space-y-12">
               <div>
                 <h1 className="text-6xl font-bold mb-3 dark:text-white">BUY CARS</h1>
@@ -113,7 +113,7 @@ export const Header: React.FC = () => {
             </div>
           </div>
 
-          <div className="button-container vehicle-services absolute bottom-8 left-0 right-0 -mt-[80px]">
+          <div className="button-container vehicle-services absolute bottom-8 left-0 right-0 -mt-[100px]">
             <div className="flex flex-row justify-center items-center max-w-7xl mx-auto gap-[10px]">
               <button 
                 id='btn' 
